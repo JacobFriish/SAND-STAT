@@ -10,20 +10,20 @@ import statsmodels.api as sm
 # Tema for grafer.
 plt.style.use("seaborn")
 
+# Opsæt grid til grafer
 fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
 
 data = pd.read_csv("data uge 46.csv")
 
 print("\n")
 print("Opgave 3.1")
-# for at se data anvend:
-# print(data)
+# for at se data anvend: print(data)
 print("Data er diskrete.")
 
 print("\n")
 print("Opgave 3.2")
 
-# Vælg hvilke kolonner der skal plottes
+# Vælg hvilke datakolonner der skal plottes
 studietimer = data['studietimer']
 karakterer = data['gns_gym']
 ids = data['id']
@@ -40,7 +40,7 @@ mean_studietimer = statistics.mean(studietimer)
 ax1.axvline(mean_studietimer, color='red', label='Mean')
 
 ax1.hist(studietimer, histtype='bar', edgecolor='black')
-#plt.show()
+
 
 print("\n")
 print("Opgave 3.3")
@@ -75,4 +75,6 @@ theta = np.polyfit(studietimer, karakterer, 1)
 y_line = theta[1] + theta[0] * studietimer
 ax2.scatter(studietimer, karakterer)
 ax2.plot(studietimer, y_line, 'r', label='Line of best fit')
+
+# Vis grafer
 plt.show()
